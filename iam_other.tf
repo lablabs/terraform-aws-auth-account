@@ -14,7 +14,7 @@ resource "aws_iam_group_policy_attachment" "manage-self-other" {
 }
 
 resource "aws_iam_group_membership" "other" {
-  count = "${length(var.other_user_names) > 0 ? 1 : 0}"
+  count = length(var.other_user_names) > 0 ? 1 : 0
   name  = module.other-label.id
   group = aws_iam_group.other.id
   users = var.other_user_names

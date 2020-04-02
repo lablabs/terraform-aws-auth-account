@@ -35,7 +35,7 @@ resource "aws_iam_role_policy_attachment" "admin" {
 }
 
 resource "aws_iam_group_membership" "admin" {
-  count = "${length(var.admin_user_names) > 0 ? 1 : 0}"
+  count = length(var.admin_user_names) > 0 ? 1 : 0
   name  = module.admin-label.id
   group = aws_iam_group.admin.id
   users = var.admin_user_names
