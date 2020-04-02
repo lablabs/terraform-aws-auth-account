@@ -25,25 +25,25 @@ variable "attributes" {
 
 # Assumed Role
 variable "admin_name" {
-  type        = "string"
+  type        = string
   default     = "admin"
   description = "Name for the admin group and role (e.g. `admin`)"
 }
 
 variable "other_group_name" {
-  type        = "string"
+  type        = string
   default     = "other"
   description = "Name for the group with non-admin users"
 }
 
 variable "admin_user_names" {
-  type        = "list"
+  type        = list
   default     = []
   description = "Optional list of IAM user names to add to the admin group"
 }
 
 variable "other_user_names" {
-  type        = "list"
+  type        = list
   default     = []
   description = "Optional list of IAM user names to setup"
 }
