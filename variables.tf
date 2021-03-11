@@ -37,13 +37,13 @@ variable "other_group_name" {
 }
 
 variable "admin_user_names" {
-  type        = list
+  type        = list(any)
   default     = []
   description = "Optional list of IAM user names to add to the admin group"
 }
 
 variable "other_user_names" {
-  type        = list
+  type        = list(any)
   default     = []
   description = "Optional list of IAM user names to setup"
 }

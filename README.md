@@ -18,19 +18,40 @@ A terraform module to create AWS Identity and Access Management (IAM) resources.
 
 | Name | Version |
 |------|---------|
-| terraform | ~> 0.12 |
+| terraform | >= 0.13 |
+| aws | >= 2.0 |
+
+## Modules
+
+| Name | Source | Version |
+|------|--------|---------|
+| admin-label | cloudposse/label/null | 0.24.1 |
+| other-label | cloudposse/label/null | 0.24.1 |
+
+## Resources
+
+| Name |
+|------|
+| [aws_caller_identity](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/caller_identity) |
+| [aws_iam_group](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_group) |
+| [aws_iam_group_membership](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_group_membership) |
+| [aws_iam_group_policy_attachment](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_group_policy_attachment) |
+| [aws_iam_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy) |
+| [aws_iam_policy_document](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) |
+| [aws_iam_role](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role) |
+| [aws_iam_role_policy_attachment](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy_attachment) |
 
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | admin\_name | Name for the admin group and role (e.g. `admin`) | `string` | `"admin"` | no |
-| admin\_user\_names | Optional list of IAM user names to add to the admin group | `list` | `[]` | no |
+| admin\_user\_names | Optional list of IAM user names to add to the admin group | `list(any)` | `[]` | no |
 | attributes | Additional attributes (e.g. `1`) | `list(string)` | `[]` | no |
 | environment | Environment, e.g. 'prod', 'staging', 'dev', 'pre-prod', 'UAT' | `string` | `""` | no |
 | namespace | Namespace, which could be your organization name or abbreviation, e.g. 'eg' or 'cp' | `string` | `""` | no |
 | other\_group\_name | Name for the group with non-admin users | `string` | `"other"` | no |
-| other\_user\_names | Optional list of IAM user names to setup | `list` | `[]` | no |
+| other\_user\_names | Optional list of IAM user names to setup | `list(any)` | `[]` | no |
 | tags | Additional tags (e.g. `map('BusinessUnit','XYZ')` | `map(string)` | `{}` | no |
 
 ## Outputs
@@ -50,7 +71,6 @@ A terraform module to create AWS Identity and Access Management (IAM) resources.
 | role\_admin\_arn | The ARN of the admin role |
 | role\_admin\_id | The ID of the admin role |
 | role\_admin\_name | The name of the admin role |
-
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
 ## Contributing and reporting issues
